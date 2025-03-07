@@ -7,116 +7,127 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Baba Guru Nanak University',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+        backgroundColor: Colors.deepPurple,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              'assets/images/logo.png', // Ensure the file exists in assets folder
+              height: 40,
+              errorBuilder: (context, error, stackTrace) {
+                return const Icon(Icons.error, color: Colors.white);
+              },
+            ),
+            const SizedBox(width: 10),
+            const Expanded(
+              child: Text(
+                'BABA GURU NANAK UNIVERSITY NANKANA SAHIB',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // About Section
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'About Baba Guru Nanak University',
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.deepPurple,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    '''Baba Guru Nanak University (BGNU) is a public sector university located in District Nankana Sahib, Punjab, Pakistan. 
+It aims to facilitate 10,000 to 15,000 students worldwide. The foundation stone was laid on October 28, 2019, by the Prime Minister of Pakistan. 
+The Government of Punjab formally passed the Baba Guru Nanak University Nankana Sahib Act 2020 (X of 2020) on July 2, 2020.
+
+The university is designed to follow the standards of world-renowned institutions, with faculties in Medicine, Pharmacy, Engineering, Computer Science, 
+Languages, Music, and Social Sciences. An initial budget of PKR 6 billion has been allocated for this project, to be spent in three phases. 
+Phase-I construction is already underway.
+
+Dr. Muhammad Afzal was appointed as the first Vice Chancellor. The university has signed MOUs with Govt. Guru Nanak (Post Graduate) College and Govt. 
+Guru Nanak Associate College for Women for technical assistance and temporary classroom arrangements until the academic building is completed.
+
+Admissions for the Fall 2024 semester will be announced soon, with academic programs already prepared. The university has also introduced 
+the Centre of Excellence for Baba Guru Nanak & Sikh Cultural Heritage, along with a dedicated chair for Punjab Studies.''',
+                    style: TextStyle(fontSize: 16),
+                    textAlign: TextAlign.justify,
+                  ),
+                ],
+              ),
+            ),
+
+            // Image Below About Section
+            // Image Below About Section
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(
+                  10,
+                ), // Optional: Rounded corners
+                child: Image.asset(
+                  'assets/images/vc.png',
+                  height: 150, // Adjusted height
+                  width: 300, // Adjusted width
+                  fit: BoxFit.contain, // Ensures the whole image is visible
+                  errorBuilder: (context, error, stackTrace) {
+                    return const Icon(
+                      Icons.broken_image,
+                      size: 50,
+                      color: Colors.grey,
+                    );
+                  },
+                ),
+              ),
+            ),
+
+            // Footer
+            Container(
+              padding: const EdgeInsets.all(16.0),
+              color: Colors.deepPurple,
+              width: double.infinity,
+              child: const Center(
+                child: Text(
+                  '© 2025 Baba Guru Nanak University | All Rights Reserved',
+                  style: TextStyle(color: Colors.white, fontSize: 14),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
