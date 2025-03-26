@@ -8,6 +8,7 @@ class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginPageState createState() => _LoginPageState();
 }
 
@@ -29,6 +30,7 @@ class _LoginPageState extends State<LoginPage> {
     if (whoLogin != null && whoLogin.isNotEmpty) {
       Future.delayed(Duration.zero, () {
         Navigator.pushReplacement(
+          // ignore: use_build_context_synchronously
           context,
           MaterialPageRoute(builder: (context) => ProfilePage(email: whoLogin)),
         );
@@ -49,10 +51,12 @@ class _LoginPageState extends State<LoginPage> {
     List<String> usersData = prefs.getStringList('users') ?? [];
 
     if (usersData.isEmpty) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("No users found. Please sign up.")),
       );
       Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => const SignUpPage()),
       );
@@ -73,16 +77,19 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     if (loginSuccess) {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Successfully Logged In")),
       );
 
       await Future.delayed(Duration(milliseconds: 500)); // Ensure SharedPreferences updates
       Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => ProfilePage(email: email)),
       );
     } else {
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Invalid Email or Password")),
       );

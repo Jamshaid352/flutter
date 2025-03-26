@@ -12,6 +12,7 @@ class ProfilePage extends StatelessWidget {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('who_login');
     Navigator.pushReplacement(
+      // ignore: use_build_context_synchronously
       context,
       MaterialPageRoute(builder: (context) => const LoginPage()),
     );

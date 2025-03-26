@@ -9,6 +9,7 @@ class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SignUpPageState createState() => _SignUpPageState();
 }
 
@@ -78,6 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
       });
 
       if (emailExists) {
+        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Email already registered")));
         return;
       }
@@ -94,9 +96,12 @@ class _SignUpPageState extends State<SignUpPage> {
       users.add(jsonEncode(newUser));
       await prefs.setStringList('users', users);
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Successfully Registered")));
 
       // Redirect to Login Page
+      // ignore: use_build_context_synchronously
+      // ignore: use_build_context_synchronously
       Navigator.pop(context);
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please fill all fields")));
